@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "697906261808",
+    "firebase_url": "https://typeahead-13f56.firebaseio.com",
+    "project_id": "typeahead-13f56",
+    "storage_bucket": "typeahead-13f56.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697906261808:android:8a202e83305d5cbe",
+        "android_client_info": {
+          "package_name": "brandenc.com.typeahead"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697906261808-h85en218dom2utqpm7aipsba216ee0vv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeBXon1SkT2chclEiVH4vswxl2_zO2KVk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="brandenc.com.typeahead.MainActivity">
+
+    <item
+        android:id="@+id/favorite_icon"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_favorite_border_black_24px"
+        app:showAsAction="always"/>
+</menu>
