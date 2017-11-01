@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 
 import javax.inject.Singleton;
 
+import brandenc.com.typeahead.Network.SearchApi;
 import dagger.Component;
 import retrofit2.Retrofit;
 
@@ -14,10 +15,11 @@ import retrofit2.Retrofit;
 @Component(modules=ApplicationModule.class)
 public interface ApplicationComponent {
     Context context();
-    Retrofit retrofit();
+    SearchApi searchApi();
     SharedPreferences sharedPreferences();
     Gson gson();
 
     void inject(MainActivity mainActivity);
     void inject(EventDetailActivity detailActivity);
+    void inject(EventAdapter adapter);
 }

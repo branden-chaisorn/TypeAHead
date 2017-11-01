@@ -12,8 +12,7 @@ class StringManipulationsKtTest {
     fun createEventNameBase() {
         // Given
         val performer1 = Performer.create("performer1", "test")
-        val performerList = mutableListOf<Performer>()
-        performerList.add(performer1)
+        val performerList = listOf(performer1)
 
         // When
         val eventName = createEventName(performerList)
@@ -27,9 +26,7 @@ class StringManipulationsKtTest {
         // Given
         val performer1 = Performer.create("performer1", "test")
         val performer2 = Performer.create("performer2", "test")
-        val performerList = mutableListOf<Performer>()
-        performerList.add(performer1)
-        performerList.add(performer2)
+        val performerList = listOf(performer1, performer2)
 
         // When
         val eventName = createEventName(performerList)
@@ -44,10 +41,7 @@ class StringManipulationsKtTest {
         val performer1 = Performer.create("performer1", "test")
         val performer2 = Performer.create("performer2", "test")
         val performer3 = Performer.create("performer3", "test")
-        val performerList = mutableListOf<Performer>()
-        performerList.add(performer1)
-        performerList.add(performer2)
-        performerList.add(performer3)
+        val performerList = listOf(performer1, performer2, performer3)
 
         // When
         val eventName = createEventName(performerList)
@@ -62,13 +56,12 @@ class StringManipulationsKtTest {
         val performer1 = Performer.create("performer1", "test")
         val performer2 = Performer.create("performer2", "test")
         val performer3 = Performer.create("performer3", "test")
-        val performerList = mutableListOf<Performer>()
+        val performerList = listOf(performer1, performer2, performer3)
 
-        performerList.add(performer1)
-        performerList.add(performer2)
-        performerList.add(performer3)
-
+        // When
         val eventName = createEventName(performerList)
+
+        // Then
         assertFalse("performer1, performer3, performer2" == eventName)
     }
 

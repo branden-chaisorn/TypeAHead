@@ -23,14 +23,10 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-
-    @Inject
-    Retrofit retrofit;
 
     @BindView(R.id.event_list_view)
     RecyclerView eventListView;
@@ -38,13 +34,14 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.plain_text_input)
     SearchView eventSearchEditText;
 
+    @Inject
+    SearchApi apiService;
+
     LinearLayoutManager layoutManager;
 
     private List<Event> events = new ArrayList<>();
 
     EventAdapter eventAdapter;
-
-    private SearchApi apiService;
 
     private BaseResponse savedResponse;
 
@@ -87,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this);
         eventListView.setLayoutManager(layoutManager);
-
-        apiService = retrofit.create(SearchApi.class);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

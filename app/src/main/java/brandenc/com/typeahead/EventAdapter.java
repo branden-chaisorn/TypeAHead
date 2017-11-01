@@ -21,6 +21,8 @@ import java.util.List;
 import brandenc.com.typeahead.ImageProcessing.CircleTransformation;
 import brandenc.com.typeahead.Models.Event;
 import brandenc.com.typeahead.StringManipulations.StringManipulationsKt;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventItemViewHolder> {
 
@@ -106,20 +108,27 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventItemViewHolder
     }
 
     final class EventItemViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.performer_image)
         ImageView eventPerformerImage;
+
+        @BindView(R.id.event_name)
         TextView eventNameTextView;
+
+        @BindView(R.id.event_city)
         TextView eventCityTextView;
+
+        @BindView(R.id.event_date)
         TextView eventDateTextView;
+
+        @BindView(R.id.favorite_icon)
         ImageView eventFavoriteIcon;
+
         View eventItemLayout;
 
         EventItemViewHolder(View v) {
             super(v);
-            eventPerformerImage = v.findViewById(R.id.performer_image);
-            eventNameTextView = v.findViewById(R.id.event_name);
-            eventCityTextView = v.findViewById(R.id.event_city);
-            eventDateTextView = v.findViewById(R.id.event_date);
-            eventFavoriteIcon = v.findViewById(R.id.favorite_icon);
+            ButterKnife.bind(this, v);
             eventItemLayout = v;
         }
     }

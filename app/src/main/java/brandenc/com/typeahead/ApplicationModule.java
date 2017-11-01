@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import javax.inject.Singleton;
 
 import brandenc.com.typeahead.Models.BaseResponse;
+import brandenc.com.typeahead.Network.SearchApi;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -42,11 +43,11 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(Gson gson) {
+    SearchApi provideSearchApi(Gson gson) {
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
+                .build().create(SearchApi.class);
     }
 
     @Provides
