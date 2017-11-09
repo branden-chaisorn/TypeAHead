@@ -20,7 +20,7 @@ import java.util.List;
 
 import brandenc.com.typeahead.ImageProcessing.CircleTransformation;
 import brandenc.com.typeahead.Models.Event;
-import brandenc.com.typeahead.StringManipulations.StringManipulationsKt;
+import brandenc.com.typeahead.databinding.EventListItemBinding;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -43,10 +43,16 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventItemViewHolder
     @Override
     public EventItemViewHolder onCreateViewHolder(ViewGroup parent,
             int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.event_list_item, parent, false);
+//        View v = LayoutInflater.from(parent.getContext())
+//                .inflate(R.layout.event_list_item, parent, false);
 
-        return new EventItemViewHolder(v);
+        LayoutInflater layoutInflater =
+                LayoutInflater.from(parent.getContext());
+
+        EventListItemBinding itemBinding =
+                EventListItemBinding.inflate(layoutInflater, parent, false);
+
+        return new EventItemViewHolder(itemBinding);
     }
 
     @Override
@@ -84,9 +90,11 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventItemViewHolder
                     .into(holder.eventPerformerImage);
         }
 
-        holder.eventNameTextView.setText(StringManipulationsKt.createEventName(currentEvent.performers()));
-        holder.eventCityTextView.setText(currentEvent.venue().displayLocation());
-        holder.eventDateTextView.setText(currentEvent.eventDate().toString());
+        holder.bind(currentEvent);
+////        EventDetailActivity_ViewBinding binding = DataBindingUtil.setContentView(context.getApplicationContext(), R.layout.event_list_item);
+//        holder.eventNameTextView.setText(StringManipulationsKt.createEventName(currentEvent.performers()));
+//        holder.eventCityTextView.setText(currentEvent.venue().displayLocation());
+//        holder.eventDateTextView.setText(currentEvent.eventDate().toString());
 
         holder.eventItemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +117,8 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventItemViewHolder
 
     final class EventItemViewHolder extends RecyclerView.ViewHolder {
 
+        private EventListItemBinding binding;
+
         @BindView(R.id.performer_image)
         ImageView eventPerformerImage;
 
@@ -130,6 +140,16 @@ class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventItemViewHolder
             super(v);
             ButterKnife.bind(this, v);
             eventItemLayout = v;
+        }
+
+        public EventItemViewHolder(EventListItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(Event event) {
+            binding.setData(event);
+            binding.executePendingBindings();
         }
     }
 }
